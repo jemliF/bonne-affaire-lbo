@@ -1,0 +1,30 @@
+<ion-view view-title="Live offers" hide-back-button="true">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <a class="item item-thumbnail-right" ng-repeat="activeOffer in activeOffers"
+         ng-href="#/app/offers/{{activeOffer.offer.id}}">
+        <img ng-src="{{siteRoot}}/upload/assets/img/media-support/{{activeOffer.mediaSupport.fileName}}">
+        <h2 style="color: #8f8f8f">{{activeOffer.offer.title}}</h2>
+        <h3 class="balanced" ng-show="activeOffer.offer.promotionType=='Absolute'">
+           {{activeOffer.offer.promotionSecondParam}} DTN <strike
+          class="assertive">{{activeOffer.offer.promotionFirstParam}} DTN</strike>
+        </h3>
+        <h3 class="balanced" ng-show="activeOffer.offer.promotionType=='Gift'">
+          {{activeOffer.offer.promotionFirstParam}} <i class="icon ion-android-done dark"></i>{{activeOffer.offer.promotionSecondParam}}
+        </h3>
+        <h3 class="balanced" ng-show="activeOffer.offer.promotionType=='Relative'">
+          {{activeOffer.offer.promotionFirstParam}} % discount
+        </h3>
+        <h4 class="assertive pull right"><i class="icon ion-clock"></i>&nbsp;{{activeOffer.time.days}}<sub>days</sub>&nbsp;{{activeOffer.time.hours}}<sub>hours</sub>&nbsp;{{activeOffer.time.minutes}}<sub>minutes</sub>
+        </h4>
+        <h3 class="royal">Taken:&nbsp;{{activeOffer.reservationsCount}}&nbsp;&nbsp;|&nbsp;&nbsp;Max:&nbsp;{{activeOffer.offer.maxReservationNumber}}</h3>
+      </a>
+    </ion-list>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,99 @@
+<ion-view view-title="Reservation validation">
+  <ion-content scroll="true" padding="true">
+    <button class="button button-balanced button-block" ng-click="confirmReservation()" ng-show="!isConfirmed">Confirm
+      reservation
+    </button>
+
+    <div class="item item-divider item-icon-right">
+      <i class="icon ion-clipboard dark"></i>
+      Reservation details
+    </div>
+    <div class="list">
+      <div class="item item-icon-left dark"><!-- item-icon-right  -->
+        <i class="icon ion-checkmark"></i>
+        Status
+        <span class="item-note">
+          {{reservation.status}}
+          </span>
+        <!--i class="icon dark"
+           ng-class="isConfirmed ? 'ion-happy-outline' : 'ion-sad-outline'"
+           ng-if="reservation.status == 'pending'"></i-->
+      </div>
+      <div class="item item-icon-left dark">
+        <i class="icon ion-calendar"></i>
+        Date
+        <span class="item-note">
+          {{reservation.reservationDate| date: 'MM/dd/yyyy'}}
+          </span>
+      </div>
+    </div>
+
+    <div class="item item-divider item-icon-right">
+      <i class="icon ion-person dark"></i>
+      Subscriber details
+    </div>
+    <div class="item item-thumbnail-right">
+      <img class="img-circle"
+           ng-src="{{siteRoot}}/upload/assets/img/subscriber/{{reservation.subscriber.photo}}">
+      <h2 class="title dark">{{reservation.subscriber.firstname}}&nbsp;{{reservation.subscriber.lastname}}</h2>
+    </div>
+    <div class="list">
+      <div class="item item-icon-left dark">
+        <i class="icon ion-email"></i>
+        Email
+        <span class="item-note">
+         <p> {{reservation.subscriber.email}}</p>
+        </span>
+      </div>
+      <div class="item item-icon-left dark">
+        <i class="icon ion-android-phone-portrait"></i>
+        Phone
+        <span class="item-note">
+         <p> {{reservation.subscriber.phone}}</p>
+        </span>
+      </div>
+      <div class="item item-icon-left dark">
+        <i class="icon ion-location"></i>
+        Address
+        <span class="item-note">
+         <p> {{reservation.subscriber.address}}</p>
+        </span>
+      </div>
+    </div>
+
+    <div class="item item-divider item-icon-right">
+      <i class="icon ion-bag dark"></i>
+      Offer details
+    </div>
+    <h4 class="light-bg dark">
+      <strong>{{activeOffer.offer.title}}</strong>
+    </h4>
+
+    <div class="item item-body">
+      <ion-gallery ng-if="mediaSupports" ion-gallery-items="mediaSupports"></ion-gallery>
+      <h3 class="balanced block" ng-show="activeOffer.offer.promotionType=='Absolute'">
+        {{activeOffer.offer.promotionSecondParam}} DTN <strike
+        class="assertive">{{activeOffer.offer.promotionFirstParam}}
+        DTN</strike>
+      </h3>
+      <h3 class="balanced block" ng-show="activeOffer.offer.promotionType=='Gift'">
+        {{activeOffer.offer.promotionFirstParam}} <i class="icon ion-android-done dark"></i>{{activeOffer.offer.promotionSecondParam}}
+      </h3>
+      <h3 class="balanced block" ng-show="activeOffer.offer.promotionType=='Relative'">
+        {{activeOffer.offer.promotionFirstParam}} % discount
+      </h3>
+    </div>
+    <div class="row stable-bg responsive-sm">
+      <div class="col"><h4 class="royal">Taken:&nbsp;{{reservationsCount}}&nbsp;&nbsp;|&nbsp;&nbsp;Max:&nbsp;{{activeOffer.offer.maxReservationNumber}}</h4>
+      </div>
+      <div class="col"><h4 class="dark"><i class="icon ion-bookmark">&nbsp;Offer status:</i>&nbsp;{{status}}</i>
+      </h4></div>
+    </div>
+    <div class="row stable-bg">
+      <div class="col"><h4 class="assertive"><i
+        class="icon ion-clock"></i>&nbsp;{{activeOffer.time.days}}<sub>days</sub>&nbsp;{{activeOffer.time.hours}}<sub>hours</sub>&nbsp;{{activeOffer.time.minutes}}<sub>minutes</sub>
+      </h4></div>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,113 @@
+<ion-view view-title="Profile" align-title="left">
+  <ion-content padding="true">
+    <div class="item item-divider item-icon-right">
+      <i class="icon ion-person dark"></i>
+      Your infos
+    </div>
+    <div class="item item-thumbnail-right">
+      <img class="img-circle" src="{{siteRoot}}/upload/assets/img/localbusinessuser/{{localBusinessUser.photo}}">
+      <h2 class="title dark">{{localBusinessUser.firstname}}&nbsp;{{localBusinessUser.lastname}}</h2>
+    </div>
+    <div class="list">
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-person"></i>
+        Gender
+        <span class="item-note">
+          <p ng-show="localBusinessUser.gender">Male</p>
+          <p ng-hide="localBusinessUser.gender">Female</p>
+        </span>
+      </div>
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-calendar"></i>
+        Birthdate
+        <span class="item-note">
+         <p> {{localBusinessUser.birthdate | date: 'MM/dd/yyyy'}}</p>
+        </span>
+      </div>
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-email"></i>
+        Email
+        <span class="item-note">
+         <p> {{localBusinessUser.email}}</p>
+        </span>
+      </div>
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-android-phone-portrait"></i>
+        Phone
+        <span class="item-note">
+         <p> {{localBusinessUser.phone}}</p>
+        </span>
+      </div>
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-location"></i>
+        Address
+      </div>
+      <div class="item item-body  dark">
+        <p>{{localBusinessUser.address}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="item item-divider item-icon-right">
+      <i class="icon ion-flag dark"></i>
+      Your company infos
+    </div>
+    <div class="item item-thumbnail-right" href="">
+      <img class="img-circle"
+           src="{{siteRoot}}/upload/assets/img/localbusiness/{{localBusinessUser.localBusiness.logo}}">
+      <h2 class="title dark">{{localBusinessUser.localBusiness.label}}</h2>
+      <h4 class="dark">{{localBusinessUser.localBusiness.category.name}}</h4>
+    </div>
+    <div class="list">
+
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-email"></i>
+        Email
+        <span class="item-note">
+          <p>{{localBusinessUser.localBusiness.email}}</p>
+        </span>
+      </div>
+
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-location"></i>
+        Address
+      </div>
+      <div class="item item-body  dark">
+        <p>{{localBusinessUser.localBusiness.address}}</p>
+      </div>
+
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-android-call"></i>
+        Landline
+        <span class="item-note">
+          <p>{{localBusinessUser.localBusiness.landline}}</p>
+        </span>
+      </div>
+
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-earth"></i>
+        Website
+        <span class="item-note">
+          <p>{{localBusinessUser.localBusiness.website}}</p>
+        </span>
+      </div>
+
+      <!--div class="item item-icon-left  dark">
+        <i class="icon ion-android-list"></i>
+        Schedule
+        <span class="item-note">
+          <p>{{localBusinessUser.localBusiness.schedule}}</p>
+        </span>
+      </div-->
+
+      <div class="item item-icon-left  dark">
+        <i class="icon ion-android-list"></i>
+        Schedule
+      </div>
+      <div class="item item-body  dark">
+        <p>{{localBusinessUser.localBusiness.schedule}}</p>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>

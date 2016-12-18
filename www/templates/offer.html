@@ -1,0 +1,62 @@
+<ion-view view-title="Offer details">
+  <ion-content padding="true">
+    <h4 class="light-bg" style="color: #8f8f8f">
+      <strong>{{activeOffer.offer.title}}</strong>
+    </h4>
+
+    <div class="item item-body">
+      <ion-gallery ng-if="mediaSupports" ion-gallery-items="mediaSupports"></ion-gallery>
+
+
+      <h3 class="balanced block" ng-show="activeOffer.offer.promotionType=='Absolute'">
+        {{activeOffer.offer.promotionSecondParam}} DTN <strike
+        class="assertive">{{activeOffer.offer.promotionFirstParam}}
+        DTN</strike>
+      </h3>
+      <h3 class="balanced block" ng-show="activeOffer.offer.promotionType=='Gift'">
+        {{activeOffer.offer.promotionFirstParam}} <i class="icon ion-android-done positive"></i>{{activeOffer.offer.promotionSecondParam}}
+      </h3>
+      <h3 class="balanced block" ng-show="activeOffer.offer.promotionType=='Relative'">
+        {{activeOffer.offer.promotionFirstParam}} % discount
+      </h3>
+      <p>{{activeOffer.offer.description}}</p>
+    </div>
+    <div class="row stable-bg responsive-sm responsive-lg responsive-md inline">
+      <h4 class="positive">Taken:&nbsp;{{reservationsCount}}&nbsp;&nbsp;|&nbsp;&nbsp;Max:&nbsp;{{activeOffer.offer.maxReservationNumber}}&nbsp;|&nbsp;Viewed:&nbsp;{{activeOffer.offer.viewsNumber}}
+      </h4>
+      <h4 class="assertive" ng-show="getActiveOffersByLocalBusiness.offer.status=='Active'"><i class="icon ion-clock"></i>&nbsp;{{activeOffer.time.days}}<sub>days</sub>&nbsp;{{activeOffer.time.hours}}<sub>hours</sub>&nbsp;{{activeOffer.time.minutes}}<sub>minutes</sub>
+      </h4>
+    </div>
+
+    <!-- offer feedbacks -->
+    <div class="list" scroll="true">
+      <div class="item item-divider item-icon-right">
+        <i class="icon ion-chatbubble-working balanced"></i>
+        Feedbacks
+        <p ng-show="!feedbacks.length>0">No feedbacks yet</p>
+      </div>
+      <div class="item item-avatar" ng-repeat="feedback in feedbacks">
+        <img ng-src="{{siteRoot}}/upload/assets/img/subscriber/{{feedback.subscriber.photo}}">
+        <h2>{{feedback.subscriber.firstname}}&nbsp;{{feedback.subscriber.lastname}}</h2>
+        <p>{{feedback.comment}}</p>
+        <span class="pull-right"><p class="h5"><i class="icon ion-ios-calendar"></i> {{feedback.sentDate| date:
+          'MM/dd/yyyy'}}</p></span>
+      </div>
+
+      <!-- offer ratings -->
+      <div class="item item-divider item-icon-right">
+        <i class="icon ion-star energized"></i>
+        Ratings
+        <p ng-show="!ratings.length>0">No ratings yet</p>
+      </div>
+      <div class="item item-avatar" ng-repeat="rateObj in ratings">
+        <img ng-src="{{siteRoot}}/upload/assets/img/subscriber/{{rateObj.rating.subscriber.photo}}">
+        <h2>{{rateObj.rating.subscriber.firstname}}&nbsp;{{rateObj.rating.subscriber.lastname}}</h2>
+        <i class="icon ion-star energized animated bounceIn" ng-repeat="star in rateObj.stars"></i>&nbsp;
+        <span class="pull-right"><p class="h5"><i class="icon ion-ios-calendar"></i> {{rateObj.rating.sentDate| date:
+          'MM/dd/yyyy'}}</p></span>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

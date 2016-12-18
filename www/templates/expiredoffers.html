@@ -1,0 +1,28 @@
+<ion-view view-title="Expired offers" hide-back-button="true">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <a class="item item-thumbnail-right" ng-repeat="expiredOffer in expiredOffers"
+         ng-href="#/app/offers/{{expiredOffer.offer.id}}">
+        <img ng-src="{{siteRoot}}/upload/assets/img/media-support/{{expiredOffer.mediaSupport.fileName}}">
+        <h2 style="color: #8f8f8f">{{expiredOffer.offer.title}}</h2>
+        <h3 class="balanced" ng-show="expiredOffer.offer.promotionType=='Absolute'">
+          {{expiredOffer.offer.promotionSecondParam}} DTN <strike
+          class="assertive">{{expiredOffer.offer.promotionFirstParam}} DTN</strike>
+        </h3>
+        <h3 class="balanced" ng-show="expiredOffer.offer.promotionType=='Gift'">
+          {{expiredOffer.offer.promotionFirstParam}} <i class="icon ion-android-done dark"></i>{{expiredOffer.offer.promotionSecondParam}}
+        </h3>
+        <h3 class="balanced" ng-show="expiredOffer.offer.promotionType=='Relative'">
+          {{expiredOffer.offer.promotionFirstParam}} % discount
+        </h3>
+        <h3 class="royal">Taken:&nbsp;{{expiredOffer.reservationsCount}}&nbsp;&nbsp;|&nbsp;&nbsp;Max:&nbsp;{{expiredOffer.offer.maxReservationNumber}}</h3>
+      </a>
+    </ion-list>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>
